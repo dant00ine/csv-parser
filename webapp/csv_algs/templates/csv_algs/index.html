@@ -1,0 +1,73 @@
+
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'csv_algs/csv-styles.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'csv_algs/mobile-csv-styles.css' %}" media="screen and (max-width: 650px)">
+
+<h1>eccube csv generator</h1>
+
+{% comment %} <!-- list available groups -->
+
+{% if batches_list %}
+    <ul>
+        {% for batch in batches_list %}
+            <li><a href="{% url 'show_batch' batch.id %}">
+                {{ batch.name }}
+            </a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+<p>no batches are available.</p>
+{% endif %} {% endcomment %}
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<div class="error_message">
+    
+</div>
+
+<form class="box" method="post" action="{% url 'create' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="centered__content">
+        
+        <div class="files__hopper">
+            <div class="file__area" id="eccube">
+                <h2><span>➊</span> eccube-csv</h2>
+                <div class="file__graphic">
+                </div>
+                <div class="box__input">
+                    <input accept=".csv" class="box__file" type="file" name="eccube-csv" id="eccube-csv"/> <br>
+                    <label for="file"><strong>Choose a file</strong><span class="box__dragndrop"> or drag it here</span>.</label>
+                </div>
+            </div>
+            <div class="file__area" id="mail-maga">
+                <h2><span>➋</span> mail maga list</h2>
+                <div class="file__graphic">
+                </div>
+                <div class="box__input">
+                    <input accept=".csv" class="box__file" type="file" name="mail-maga-csv" id="mail-maga-csv"/> <br>
+                    <label for="file"><strong>Choose a file</strong><span class="box__dragndrop"> or drag it here</span>.</label>
+                </div>
+            </div>
+            <div class="file__area" id="no-mail">
+                <h2><span>➌</span> no-mail list</h2>
+                <div class="file__graphic">
+                </div>
+                <div class="box__input">
+                    <input accept=".csv" class="box__file" type="file" name="no-mail-csv" id="no-mail-csv"/> <br>
+                    <label for="file"><strong>Choose a file</strong><span class="box__dragndrop"> or drag it here</span>.</label>
+                </div>
+            </div>
+        </div>
+        <div class="form__details">
+            <p>When you're done, hit upload!</p>
+            <button class="box__button" type="submit">Upload</button>
+        </div>
+    </div>
+    <div class="box__uploading">Uploading&hellip;</div>
+    <div class="box__success">Done!</div>
+    <div class="box__error">Error! <span></span>.</div>
+</form>
+
+<script type="text/javascript" src="{% static 'csv_algs/jquery-3.2.1.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'csv_algs/csv-app.js' %}"></script>

@@ -1,0 +1,9 @@
+.files__hopper {
+    display: block;
+}
+
+    .file__area {
+        display: block;
+        padding: 25px 0;
+        margin: 25px 0;
+    }
