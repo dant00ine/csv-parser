@@ -1,13 +1,12 @@
 
 
-
 ## Installation
 download and unzip folder, then commands to prepare 
 ```
 cd funglr-csv-app
 source bin/activate
 cd webapp
-python .manage.py migrate
+python manage.py migrate
 ```
 
 ## Configuration
@@ -18,7 +17,7 @@ LOG_DIRECTORY
 LOG_NAME
 TEST_FILES_PATH
 
-The TEST_FILES_PATH, should contain the three CSV files that you want to use for the headless browser automation. 
+The TEST_FILES_PATH, should contain the (three necessary) files for testing. 
 
 The files must be named:
 ```
@@ -32,10 +31,10 @@ and placed inside the TEST_FILES_PATH directory
 
 to run tests, just execute
 ```
-python .manage.py test
+python manage.py test
 ```
 
 start server listening on port (default: 8000):
 ```
-python .manage.py runserver [port]
+python manage.py runserver [port]
 ```
